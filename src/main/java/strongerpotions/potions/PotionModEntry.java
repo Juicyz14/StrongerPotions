@@ -1,17 +1,28 @@
 package strongerpotions.potions;
 
 
+import necesse.engine.modLoader.LoadedMod;
 import necesse.engine.registries.ItemRegistry;
+import necesse.engine.save.LoadData;
+import necesse.engine.save.SaveSyntaxException;
+import necesse.engine.save.levelData.RecipeSave;
 import necesse.inventory.item.Item;
 import necesse.inventory.item.placeableItem.consumableItem.potionConsumableItem.SimplePotionItem;
+import necesse.inventory.recipe.Recipe;
+import necesse.inventory.recipe.Recipes;
 
-import strongerpotions.potions.PotionModSettings;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Enumeration;
+import java.util.jar.JarEntry;
 
 public final class PotionModEntry
 {
     private PotionModEntry() {}
 
-    public static void initPotions()
+    public static void registerItemsPotions()
     {
         // Register our items
         ItemRegistry.registerItem("sp_accuracypotionofdurability",
@@ -60,7 +71,7 @@ public final class PotionModEntry
                 Item.Rarity.LEGENDARY,
                 "fireresistancepotion",
                 PotionModSettings.potionDuration,
-                "fireresistancepot"),
+                "fireresistpot"),
             100.0F,
             true);
 
@@ -70,7 +81,7 @@ public final class PotionModEntry
                 Item.Rarity.LEGENDARY,
                 "greaterfishingpotion",
                 PotionModSettings.potionDuration,
-                "greaterfishingpot").overridePotion("fishingpotion"),
+                "fishingpot1", "fishingpot2").overridePotion("fishingpotion"),
             100.0F,
             true);
 
@@ -120,7 +131,7 @@ public final class PotionModEntry
                 Item.Rarity.LEGENDARY,
                 "greaterresistancepotion",
                 PotionModSettings.potionDuration,
-                "greaterresistancepot").overridePotion("resistancepotion"),
+                "greaterresistpot").overridePotion("resistancepotion"),
             100.0F,
             true);
 
@@ -140,7 +151,7 @@ public final class PotionModEntry
                 Item.Rarity.LEGENDARY,
                 "invisibilitypotion",
                 PotionModSettings.potionDuration,
-                "invisibilitypot"),
+                "invispot"),
             100.0F,
             true);
 
@@ -214,4 +225,51 @@ public final class PotionModEntry
             100.0F,
             true);
     }
+
+    public static void registerRecipesPotions()
+    {
+        LoadedMod mod = LoadedMod.getRunningMod();
+
+        try
+        {
+            Enumeration<JarEntry> entries = mod.jarFile.entries();
+            while (entries.hasMoreElements())
+            {
+                JarEntry entry = entries.nextElement();
+                String path = entry.getName();
+                if (path.equals("resources/recipes.cfg"))
+                {
+                    InputStreamReader isr = new InputStreamReader(mod.jarFile.getInputStream(entry), StandardCharsets.UTF_8);
+                    BufferedReader br = new BufferedReader(isr);
+
+                    StringBuilder recipeFile = new StringBuilder();
+                    String line;
+                    while ((line = br.readLine()) != null)
+                    {
+                        recipeFile.append(line).append("\n");
+                    }
+
+                    LoadData data = new LoadData(recipeFile.toString());
+                    if (!data.isArray())
+                    {
+                        throw new SaveSyntaxException("Ingredients script is not an array");
+                    }
+
+                    for (Recipe recipe : RecipeSave.loadRecipesSave(data))
+                    {
+                        Recipes.registerModRecipe(recipe);
+                    }
+
+                    br.close();
+                    break;
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            System.err.println("Could not load mod " + mod.id + " recipes file");
+            e.printStackTrace();
+        }
+    }
+
 }

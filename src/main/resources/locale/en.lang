@@ -21,23 +21,4 @@ sp_thornspotionofdurability=Thorns Potion of Durability
 sp_webpotionofdurability=Web Potion of Durability
 
 [itemtooltip]
-sp_accuracypotionofdurability=TBD
-sp_attackspeedpotionofdurability=TBD
-sp_battlepotionofdurability=TBD
-sp_buildingpotionofdurability=TBD
-sp_fireresistpotionofdurability=TBD
-sp_fishingpotionofdurability=TBD
-sp_miningpotionofdurability=TBD
-sp_healthregenpotionofdurability=TBD
-sp_manaregenpotionofdurability=TBD
-sp_rapidpotionofdurability=TBD
-sp_resistpotionofdurability=TBD
-sp_speedpotionofdurability=Greatly increases movement speed
-sp_invispotionofdurability=TBD
-sp_knockbackpotionofdurability=TBD
-sp_minionpotionofdurability=TBD
-sp_passivepotionofdurability=TBD
-sp_spelunkerpotionofdurability=TBD
-sp_treasurepotionofdurability=TBD
-sp_thornspotionofdurability=TBD
-sp_webpotionofdurability=TBD
+//Potions of Durability is not needed here as it uses the core potion text.
