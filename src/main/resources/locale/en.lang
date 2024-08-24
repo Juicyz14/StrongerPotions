@@ -20,5 +20,23 @@ sp_treasurepotionofdurability=Treasure Potion of Durability
 sp_thornspotionofdurability=Thorns Potion of Durability
 sp_webpotionofdurability=Web Potion of Durability
 
+sp_superioraccuracypotion=Superior Accuracy Potion
+sp_superiorattackspeedpotion=Superior Attack Speed Potion
+sp_superiorbattlepotion=Superior Battle Potion
+sp_superiorhealthregenpotion=Superior Health Regen Potion
+sp_superiormanaregenpotion=Superior Mana Regen Potion
+sp_superiorresistancepotion=Superior Resistance Potion
+sp_superiorspeedpotion=Superior Speed Potion
+
 [itemtooltip]
 //Potions of Durability is not needed here as it uses the core potion text.
+sp_superioraccuracypotion=Vastly increases crit chance
+sp_superiorattackspeedpotion=Vastly increases attack speed
+sp_superiorbattlepotion=Increases damage dealt by 25%
+sp_superiorhealthregenpotion=Vastly increases health regen
+sp_superiormanaregenpotion=Vastly increases mana regen
+sp_superiorresistancepotion=Increases armor by 18
+sp_superiorspeedpotion=Vastly increases movement speed
+
+[object]
+sp_incursionalchemytable=Incursion Alchemy Table

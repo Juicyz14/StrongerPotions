@@ -1,4 +1,4 @@
-package strongerpotions.potions;
+package strongerpotions.mod;
 
 
 import necesse.engine.modLoader.ModSettings;
@@ -13,7 +13,9 @@ import necesse.engine.save.SaveData;
  */
 public class PotionModSettings extends ModSettings
 {
-  public static int potionDuration = 2700;
+  public static int durabilityPotionDuration = 2700;
+  public static int superiorPotionDuration = 600;
+
 
   /**
    * Save settings into mod config file.
@@ -22,7 +24,9 @@ public class PotionModSettings extends ModSettings
    */
   public void addSaveData(SaveData var1)
   {
-    var1.addInt("potionDuration", potionDuration);
+    var1.addInt("durabilityPotionDuration", durabilityPotionDuration);
+    var1.addInt("superiorPotionDuration", superiorPotionDuration);
+
   }
 
   /**
@@ -32,6 +36,7 @@ public class PotionModSettings extends ModSettings
    */
   public void applyLoadData(LoadData var1)
   {
-    potionDuration = var1.getInt("potionDuration", 2700, 0, 7200);
+    durabilityPotionDuration = var1.getInt("durabilityPotionDuration", 2700, 0, 7200);
+    superiorPotionDuration = var1.getInt("superiorPotionDuration", 600, 0, 7200);
   }
 }

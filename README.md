@@ -1,2 +1,2 @@
 # StrongerPotions
- Necesse mod to make better potions
+ Necesse mod for better potions

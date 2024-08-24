@@ -4,7 +4,7 @@ plugins {
 
 project.ext.modID = "juicyz.strongerpotions" // The unique id of your mod. Must be all lowercase and cannot use special characters.
 project.ext.modName = "Stronger Potions"
-project.ext.modVersion = "0.1" // Your current builds version. Must follow the xx.xx... format.
+project.ext.modVersion = "1.0" // Your current builds version. Must follow the xx.xx... format.
 project.ext.gameVersion = "0.26.1" // The target game version.
 project.ext.modDescription = "Necesse mod to make better potions"
 project.ext.author = "Juicyz"
