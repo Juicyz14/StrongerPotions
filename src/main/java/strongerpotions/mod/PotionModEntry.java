@@ -1,19 +1,10 @@
 package strongerpotions.mod;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Enumeration;
-import java.util.jar.JarEntry;
-import necesse.engine.modLoader.LoadedMod;
 import necesse.engine.modifiers.ModifierValue;
 import necesse.engine.registries.BuffRegistry;
 import necesse.engine.registries.ItemRegistry;
 import necesse.engine.registries.ObjectRegistry;
 import necesse.engine.registries.RecipeTechRegistry;
-import necesse.engine.save.LoadData;
-import necesse.engine.save.SaveSyntaxException;
 import necesse.engine.save.levelData.RecipeSave;
 import necesse.entity.mobs.buffs.BuffModifiers;
 import necesse.entity.mobs.buffs.staticBuffs.SimplePotionBuff;
