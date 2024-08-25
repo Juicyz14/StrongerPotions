@@ -351,48 +351,9 @@ public final class PotionModEntry
 
   public static void registerRecipes()
   {
-    LoadedMod mod = LoadedMod.getRunningMod();
-
-    try
+    for (Recipe recipe : RecipeSave.loadRecipesSave(PotionModSettings.recipes))
     {
-      Enumeration<JarEntry> entries = mod.jarFile.entries();
-      while (entries.hasMoreElements())
-      {
-        JarEntry entry = entries.nextElement();
-        String path = entry.getName();
-        if (path.equals("resources/recipes.cfg"))
-        {
-          InputStreamReader isr = new InputStreamReader(mod.jarFile.getInputStream(entry), StandardCharsets.UTF_8);
-          BufferedReader br = new BufferedReader(isr);
-
-          StringBuilder recipeFile = new StringBuilder();
-          String line;
-          while ((line = br.readLine()) != null)
-          {
-            recipeFile.append(line).append("\n");
-          }
-
-          LoadData data = new LoadData(recipeFile.toString());
-          if (!data.isArray())
-          {
-            throw new SaveSyntaxException("Ingredients script is not an array");
-          }
-
-          for (Recipe recipe : RecipeSave.loadRecipesSave(data))
-          {
-            Recipes.registerModRecipe(recipe);
-          }
-
-          br.close();
-          break;
-        }
-      }
-    }
-    catch (IOException e)
-    {
-      System.err.println("Could not load mod " + mod.id + " recipes file");
-      e.printStackTrace();
+      Recipes.registerModRecipe(recipe);
     }
   }
-
 }
